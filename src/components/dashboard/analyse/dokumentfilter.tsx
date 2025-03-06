@@ -1,16 +1,13 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import { Card, InputAdornment, OutlinedInput } from '@mui/material';
 import { MagnifyingGlass as MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr/MagnifyingGlass';
 
-export function CompaniesFilters(): React.JSX.Element {
+export function DokumentFilter(): React.JSX.Element {
   return (
     <Card sx={{ p: 2 }}>
       <OutlinedInput
-        defaultValue=""
         fullWidth
-        placeholder="Search integration"
+        placeholder="Søg efter dokumenter..."
         startAdornment={
           <InputAdornment position="start">
             <MagnifyingGlassIcon fontSize="var(--icon-fontSize-md)" />

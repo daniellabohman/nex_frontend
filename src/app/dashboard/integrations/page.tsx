@@ -3,104 +3,107 @@ import type { Metadata } from 'next';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Pagination from '@mui/material/Pagination';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar';
+import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Unstable_Grid2';
-import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Download';
+import Grid from '@mui/material/Grid';
 import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
 import { Upload as UploadIcon } from '@phosphor-icons/react/dist/ssr/Upload';
 import dayjs from 'dayjs';
 
+import { Clock as ClockIcon } from '@phosphor-icons/react/dist/ssr/Clock';
+import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Download';
 import { config } from '@/config';
-import { IntegrationCard } from '@/components/dashboard/integrations/integrations-card';
-import type { Integration } from '@/components/dashboard/integrations/integrations-card';
-import { CompaniesFilters } from '@/components/dashboard/integrations/integrations-filters';
+import { DokumentFilter } from '@/components/dashboard/analyse/dokumentfilter';
+import { DokumentScan } from '@/components/dashboard/analyse/dokumentscan';
 
-export const metadata = { title: `Integrations | Dashboard | ${config.site.name}` } satisfies Metadata;
+export const metadata = { title: `Analyse | Dashboard | ${config.site.name}` } satisfies Metadata;
 
-const integrations = [
+
+interface Dokument {
+  id: string;
+  title: string;
+  description: string;
+  risiko: string;
+  reference: string;
+  standard: string;
+  uploadedAt: Date;
+}
+
+const dokumenter: Dokument[] = [
   {
-    id: 'INTEG-006',
-    title: 'Dropbox',
-    description: 'Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.',
-    logo: '/assets/logo-dropbox.png',
-    installs: 594,
-    updatedAt: dayjs().subtract(12, 'minute').toDate(),
+    id: 'DOC-001',
+    title: 'Privatlivspolitik.pdf',
+    description: 'Analyse af privatlivspolitikken på din hjemmeside.',
+    risiko: 'Høj',
+    reference: 'Artikel 13 GDPR',
+    standard: 'ISO 27001',
+    uploadedAt: dayjs().subtract(12, 'minute').toDate(),
   },
   {
-    id: 'INTEG-005',
-    title: 'Medium Corporation',
-    description: 'Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.',
-    logo: '/assets/logo-medium.png',
-    installs: 625,
-    updatedAt: dayjs().subtract(43, 'minute').subtract(1, 'hour').toDate(),
+    id: 'DOC-002',
+    title: 'Cookie Policy.docx',
+    description: 'Gennemgang af cookie-politik for overholdelse af GDPR.',
+    risiko: 'Mellem',
+    reference: 'Artikel 5 GDPR',
+    standard: 'ISO 27701',
+    uploadedAt: dayjs().subtract(3, 'hour').toDate(),
   },
   {
-    id: 'INTEG-004',
-    title: 'Slack',
-    description: 'Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.',
-    logo: '/assets/logo-slack.png',
-    installs: 857,
-    updatedAt: dayjs().subtract(50, 'minute').subtract(3, 'hour').toDate(),
+    id: 'DOC-003',
+    title: 'Databehandleraftale.pdf',
+    description: 'Dokumentation af databehandleraftaler.',
+    risiko: 'Lav',
+    reference: 'Artikel 28 GDPR',
+    standard: 'NIST 800-53',
+    uploadedAt: dayjs().subtract(1, 'day').toDate(),
   },
-  {
-    id: 'INTEG-003',
-    title: 'Lyft',
-    description: 'Lyft is an on-demand transportation company based in San Francisco, California.',
-    logo: '/assets/logo-lyft.png',
-    installs: 406,
-    updatedAt: dayjs().subtract(7, 'minute').subtract(4, 'hour').subtract(1, 'day').toDate(),
-  },
-  {
-    id: 'INTEG-002',
-    title: 'GitHub',
-    description: 'GitHub is a web-based hosting service for version control of code using Git.',
-    logo: '/assets/logo-github.png',
-    installs: 835,
-    updatedAt: dayjs().subtract(31, 'minute').subtract(4, 'hour').subtract(5, 'day').toDate(),
-  },
-  {
-    id: 'INTEG-001',
-    title: 'Squarespace',
-    description: 'Squarespace provides software as a service for website building and hosting. Headquartered in NYC.',
-    logo: '/assets/logo-squarespace.png',
-    installs: 435,
-    updatedAt: dayjs().subtract(25, 'minute').subtract(6, 'hour').subtract(6, 'day').toDate(),
-  },
-] satisfies Integration[];
+];
 
 export default function Page(): React.JSX.Element {
   return (
-    <Stack spacing={3}>
-      <Stack direction="row" spacing={3}>
-        <Stack spacing={1} sx={{ flex: '1 1 auto' }}>
-          <Typography variant="h4">Integrations</Typography>
-          <Stack sx={{ alignItems: 'center' }} direction="row" spacing={1}>
-            <Button color="inherit" startIcon={<UploadIcon fontSize="var(--icon-fontSize-md)" />}>
-              Import
-            </Button>
-            <Button color="inherit" startIcon={<DownloadIcon fontSize="var(--icon-fontSize-md)" />}>
-              Export
-            </Button>
-          </Stack>
-        </Stack>
-        <div>
-          <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
-            Add
-          </Button>
-        </div>
-      </Stack>
-      <CompaniesFilters />
+    <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Scannede Dokumenter
+      </Typography>
       <Grid container spacing={3}>
-        {integrations.map((integration) => (
-          <Grid key={integration.id} lg={4} md={6} xs={12}>
-            <IntegrationCard integration={integration} />
+        {dokumenter.map((doc) => (
+          <Grid item key={doc.id} xs={12} sm={6} md={4}>
+            <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <CardContent>
+                <Stack spacing={2}>
+                  <Avatar sx={{ bgcolor: 'primary.main', width: 56, height: 56 }}>
+                    {doc.title.charAt(0)}
+                  </Avatar>
+                  <Stack spacing={1}>
+                    <Typography variant="h6">{doc.title}</Typography>
+                    <Typography color="text.secondary">{doc.description}</Typography>
+                  </Stack>
+                </Stack>
+              </CardContent>
+              <Divider />
+              <Stack direction="row" spacing={2} sx={{ alignItems: 'center', justifyContent: 'space-between', p: 2 }}>
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                  <ClockIcon fontSize="var(--icon-fontSize-sm)" />
+                  <Typography color="text.secondary" variant="body2">
+                    Uploadet {dayjs(doc.uploadedAt).format('MMM D, YYYY')}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                  <DownloadIcon fontSize="var(--icon-fontSize-sm)" />
+                  <Typography color="text.secondary" variant="body2">
+                    Risiko: {doc.risiko}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Card>
           </Grid>
         ))}
       </Grid>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Pagination count={3} size="small" />
-      </Box>
-    </Stack>
+    </Container>
   );
 }
