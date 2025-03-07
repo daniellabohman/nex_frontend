@@ -8,30 +8,26 @@ import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
-const user = {
+const bruger = {
   name: 'Sofia Rivers',
   avatar: '/assets/avatar.png',
   jobTitle: 'Senior Developer',
   country: 'USA',
   city: 'Los Angeles',
-  timezone: 'GTM-7',
 } as const;
 
-export function AccountInfo(): React.JSX.Element {
+export function ProfilInfo(): React.JSX.Element {
   return (
     <Card>
       <CardContent>
         <Stack spacing={2} sx={{ alignItems: 'center' }}>
           <div>
-            <Avatar src={user.avatar} sx={{ height: '80px', width: '80px' }} />
+            <Avatar src={bruger.avatar} sx={{ height: '80px', width: '80px' }} />
           </div>
           <Stack spacing={1} sx={{ textAlign: 'center' }}>
-            <Typography variant="h5">{user.name}</Typography>
+            <Typography variant="h5">{bruger.name}</Typography>
             <Typography color="text.secondary" variant="body2">
-              {user.city} {user.country}
-            </Typography>
-            <Typography color="text.secondary" variant="body2">
-              {user.timezone}
+              {bruger.city} {bruger.country}
             </Typography>
           </Stack>
         </Stack>
@@ -39,7 +35,7 @@ export function AccountInfo(): React.JSX.Element {
       <Divider />
       <CardActions>
         <Button fullWidth variant="text">
-          Upload picture
+          Upload billede
         </Button>
       </CardActions>
     </Card>

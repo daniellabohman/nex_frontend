@@ -5,13 +5,13 @@ import dayjs from 'dayjs';
 
 import { config } from '@/config';
 import { Compliance } from '@/components/dashboard/overview/compliance';
-import { DokumentsTable } from '@/components/dashboard/dokument/dokument-tabel';
+import { DokumentsTable } from '@/components/dashboard/dokumenter/dokument-tabel';
 import { Overblik } from '@/components/dashboard/overview/overblik';
 import { Fremgang } from '@/components/dashboard/overview/fremgang';
 import { AI_analyse } from '@/components/dashboard/overview/AI_analyse';
 import { Total_scanning } from '@/components/dashboard/overview/total_scanning';
 import { GDPRInfo } from '@/components/dashboard/overview/GDPR_info';
-import type { Dokument } from '@/components/dashboard/dokument/dokument-tabel';
+import type { Dokument } from '@/components/dashboard/dokumenter/dokument-tabel';
 
 export const metadata = { title: `Overview | Dashboard | ${config.site.name}` } satisfies Metadata;
 

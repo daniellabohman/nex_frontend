@@ -20,6 +20,8 @@ import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Downloa
 import { config } from '@/config';
 import { DokumentFilter } from '@/components/dashboard/analyse/dokumentfilter';
 import { DokumentScan } from '@/components/dashboard/analyse/dokumentscan';
+import { UploadDokument } from '@/components/dashboard/analyse/uploaddokument';
+
 
 export const metadata = { title: `Analyse | Dashboard | ${config.site.name}` } satisfies Metadata;
 

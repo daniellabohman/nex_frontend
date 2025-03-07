@@ -21,7 +21,7 @@ const states = [
   { value: 'los-angeles', label: 'Los Angeles' },
 ] as const;
 
-export function AccountDetailsForm(): React.JSX.Element {
+export function ProfilDetaljeForm(): React.JSX.Element {
   return (
     <form
       onSubmit={(event) => {
@@ -29,38 +29,38 @@ export function AccountDetailsForm(): React.JSX.Element {
       }}
     >
       <Card>
-        <CardHeader subheader="The information can be edited" title="Profile" />
+        <CardHeader subheader="Informationen kan blive ændret" title="Profil" />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
             <Grid md={6} xs={12}>
               <FormControl fullWidth required>
-                <InputLabel>First name</InputLabel>
-                <OutlinedInput defaultValue="Sofia" label="First name" name="firstName" />
+                <InputLabel>Fornavn</InputLabel>
+                <OutlinedInput defaultValue="Sofia" label="Fornavn" name="fornavn" />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12}>
               <FormControl fullWidth required>
-                <InputLabel>Last name</InputLabel>
-                <OutlinedInput defaultValue="Rivers" label="Last name" name="lastName" />
+                <InputLabel>Efternavn</InputLabel>
+                <OutlinedInput defaultValue="Rivers" label="Efternavn" name="efternavn" />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12}>
               <FormControl fullWidth required>
-                <InputLabel>Email address</InputLabel>
-                <OutlinedInput defaultValue="sofia@devias.io" label="Email address" name="email" />
+                <InputLabel>Email</InputLabel>
+                <OutlinedInput defaultValue="sofia@devias.io" label="Email addresse" name="email" />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12}>
               <FormControl fullWidth>
-                <InputLabel>Phone number</InputLabel>
-                <OutlinedInput label="Phone number" name="phone" type="tel" />
+                <InputLabel>Mobil</InputLabel>
+                <OutlinedInput label="Mobil" name="mobil" type="tel" />
               </FormControl>
             </Grid>
             <Grid md={6} xs={12}>
               <FormControl fullWidth>
-                <InputLabel>State</InputLabel>
-                <Select defaultValue="New York" label="State" name="state" variant="outlined">
+                <InputLabel>By</InputLabel>
+                <Select defaultValue="New York" label="By" name="by" variant="outlined">
                   {states.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.label}
@@ -69,17 +69,11 @@ export function AccountDetailsForm(): React.JSX.Element {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid md={6} xs={12}>
-              <FormControl fullWidth>
-                <InputLabel>City</InputLabel>
-                <OutlinedInput label="City" />
-              </FormControl>
-            </Grid>
           </Grid>
         </CardContent>
         <Divider />
         <CardActions sx={{ justifyContent: 'flex-end' }}>
-          <Button variant="contained">Save details</Button>
+          <Button variant="contained">Gem ændringer</Button>
         </CardActions>
       </Card>
     </form>

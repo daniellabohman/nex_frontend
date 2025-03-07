@@ -7,11 +7,11 @@ import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Downloa
 import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
 import { Upload as UploadIcon } from '@phosphor-icons/react/dist/ssr/Upload';
 import { config } from '@/config';
-import { CustomersFilters } from '@/components/dashboard/dokument/customers-filters';
-import { DokumentsTable } from '@/components/dashboard/dokument/dokument-tabel';
-import type { Dokument } from '@/components/dashboard/dokument/dokument-tabel'; // Ensure this path is correct
+import { DokumentFilters } from '@/components/dashboard/dokumenter/dokument-filters';
+import { DokumentsTable } from '@/components/dashboard/dokumenter/dokument-tabel';
+import type { Dokument } from '@/components/dashboard/dokumenter/dokument-tabel'; // Ensure this path is correct
 
-export const metadata = { title: `Customers | Dashboard | ${config.site.name}` } satisfies Metadata;
+export const metadata = { title: `Dokumenter | Dashboard | ${config.site.name}` } satisfies Metadata;
 
 const customers = [
   {
@@ -71,7 +71,7 @@ export default function Page(): React.JSX.Element {
     <Stack spacing={3}>
       <Stack direction="row" spacing={3}>
         <Stack spacing={1} sx={{ flex: '1 1 auto' }}>
-          <Typography variant="h4">Customers</Typography>
+          <Typography variant="h4">Dokumenter</Typography>
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <Button color="inherit" startIcon={<UploadIcon fontSize="var(--icon-fontSize-md)" />}>
               Import
@@ -87,7 +87,7 @@ export default function Page(): React.JSX.Element {
           </Button>
         </div>
       </Stack>
-      <CustomersFilters />
+      <DokumentFilters />
       <DokumentsTable
         count={paginatedCustomers.length}
         page={page}

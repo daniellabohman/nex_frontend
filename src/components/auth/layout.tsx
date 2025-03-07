@@ -43,14 +43,20 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
       >
         <Stack spacing={3}>
           <Stack spacing={1}>
-            <Typography color="inherit" sx={{ fontSize: '24px', lineHeight: '32px', textAlign: 'center' }} variant="h1">
-              Velkommen til{' '}
+            <Typography color="inherit" sx={{ fontSize: '60px', lineHeight: '110px', textAlign: 'center' }} variant="h2">
+              {' '}
               <Box component="span" sx={{ color: '#15b79e' }}>
                 Nexpertia
               </Box>
             </Typography>
             <Typography align="center" variant="subtitle1">
-            Din hjælp til GDPR og persondataforordningen
+            Dansk hjælp til GDPR og persondataforordningen
+            </Typography>
+            <Typography align="center" variant="subtitle2">
+            Undgå bøder -
+            </Typography>
+            <Typography align="center" variant="subtitle2">
+            Få GDPR-compliance på 10 minutter!
             </Typography>
           </Stack>
           
