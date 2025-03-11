@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
@@ -5,10 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import type { SxProps } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { ArrowDown as ArrowDownIcon } from '@phosphor-icons/react/dist/ssr/ArrowDown';
-import { ArrowUp as ArrowUpIcon } from '@phosphor-icons/react/dist/ssr/ArrowUp';
-import { CurrencyDollar as CurrencyDollarIcon } from '@phosphor-icons/react/dist/ssr/CurrencyDollar';
+import Button from '@mui/material/Button';
 import { ShieldCheckIcon } from "@heroicons/react/24/solid";
+import jsPDF from 'jspdf';
 
 export interface ComplianceProps {
   complianceScore: number; // Procentværdi for compliance (f.eks. 85%)
@@ -27,6 +28,10 @@ export function ComplianceFeature({ complianceScore, riskLevel }: ComplianceProp
 }
 
 export const Compliance: React.FC<ComplianceProps> = ({ complianceScore, riskLevel, sx }) => {
+  function generatePDF(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <Card sx={sx}>
       <CardContent>
@@ -44,14 +49,20 @@ export const Compliance: React.FC<ComplianceProps> = ({ complianceScore, riskLev
           </Stack>
 
           {/* Visning af risikoniveau */}
-          <Stack sx={{ alignItems: "center" }} direction="row" spacing={2}>
+          <Stack sx={{ alignItems: "center" }} direction="row" spacing={1}>
             <Typography color="text.secondary" variant="body2">
-              Risk Level:
+              Risiko Niveau:
             </Typography>
             <Typography variant="body2" fontWeight="bold">
               {riskLevel}
             </Typography>
           </Stack>
+        </Stack>
+
+        <Stack direction="row" justifyContent="center" mt={3}>
+            <Button variant="contained" color="primary" onClick={generatePDF}>
+              Download PDF
+            </Button>
         </Stack>
       </CardContent>
     </Card>

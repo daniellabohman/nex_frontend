@@ -1,30 +1,22 @@
 import * as React from 'react';
 import type { Metadata } from 'next';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Pagination from '@mui/material/Pagination';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Divider from '@mui/material/Divider';
-import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
-import { Upload as UploadIcon } from '@phosphor-icons/react/dist/ssr/Upload';
-import dayjs from 'dayjs';
-
-import { Clock as ClockIcon } from '@phosphor-icons/react/dist/ssr/Clock';
-import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Download';
+import Typography from '@mui/material/Typography';
 import { config } from '@/config';
 import { DokumentFilter } from '@/components/dashboard/analyse/dokumentfilter';
 import { DokumentScan } from '@/components/dashboard/analyse/dokumentscan';
 import { UploadDokument } from '@/components/dashboard/analyse/uploaddokument';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import dayjs from 'dayjs';
+import { Clock as ClockIcon } from '@phosphor-icons/react/dist/ssr/Clock';
+import { Download as DownloadIcon } from '@phosphor-icons/react/dist/ssr/Download';
 
 export const metadata = { title: `Analyse | Dashboard | ${config.site.name}` } satisfies Metadata;
-
 
 interface Dokument {
   id: string;
@@ -72,7 +64,22 @@ export default function Page(): React.JSX.Element {
       <Typography variant="h4" gutterBottom>
         Scannede Dokumenter
       </Typography>
-      <Grid container spacing={3}>
+
+      {/* Søgefelt til filtrering */}
+      <DokumentFilter />
+
+      {/* Upload og scanning af dokumenter */}
+      <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid item xs={12} md={6}>
+          <UploadDokument />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <DokumentScan />
+        </Grid>
+      </Grid>
+
+      {/* Liste over tidligere analyserede dokumenter */}
+      <Grid container spacing={3} sx={{ mt: 3 }}>
         {dokumenter.map((doc) => (
           <Grid item key={doc.id} xs={12} sm={6} md={4}>
             <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

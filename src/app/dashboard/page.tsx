@@ -7,7 +7,7 @@ import { config } from '@/config';
 import { Compliance } from '@/components/dashboard/overview/compliance';
 import { DokumentsTable } from '@/components/dashboard/dokumenter/dokument-tabel';
 import { Overblik } from '@/components/dashboard/overview/overblik';
-import { Fremgang } from '@/components/dashboard/overview/fremgang';
+import { ComplianceChecklist } from '@/components/dashboard/overview/fremgang';
 import { AI_analyse } from '@/components/dashboard/overview/AI_analyse';
 import { Total_scanning } from '@/components/dashboard/overview/total_scanning';
 import { GDPRInfo } from '@/components/dashboard/overview/GDPR_info';
@@ -63,11 +63,12 @@ export default function Page(): React.JSX.Element {
         />
       </Grid>
       <Grid lg={3} sm={6} xs={12}>
-        <Fremgang sx={{ height: '100%' }} value={75.5} />
+        <ComplianceChecklist />
       </Grid>
       <Grid lg={3} sm={6} xs={12}>
-        <Total_scanning sx={{ height: '100%' }} value={250} />
+        <Total_scanning value={250} sx={{ height: "100%" }}/>
       </Grid>
+
       <Grid lg={8} xs={12}>
         <Overblik
           chartSeries={[

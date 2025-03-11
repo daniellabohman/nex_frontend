@@ -21,26 +21,33 @@ export const AI_analyse = ({ missingDocuments, issues, sx }: AI_analyseProps) =>
           <Stack direction="row" sx={{ alignItems: "flex-start", justifyContent: "space-between" }} spacing={2}>
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-                Analyse
+                Analyse overblik
               </Typography>
-              <Typography variant="h6">Mangler {missingDocuments} dokumenter</Typography>
+              <Typography variant="h4">{missingDocuments}</Typography>
             </Stack>
             {/* Ikon i cirkel-boks */}
             <Avatar sx={{ backgroundColor: "var(--mui-palette-primary-main)", height: 56, width: 56 }}>
-              <ShieldCheckIcon size={28} color="white" />
+              <ShieldCheckIcon size={32} color="white" />
             </Avatar>
           </Stack>
+
           {/* Problemområder-liste */}
-          <Typography variant="subtitle2" color="error">
-            Problemområder:
-          </Typography>
-          <ul>
+          <Stack sx={{ alignItems: "center" }} direction="row" spacing={1}>
+            <Typography color="text.secondary" variant="body2">
+              Mangler:
+            </Typography>
+            <Typography variant="body2" fontWeight="bold">
+              {missingDocuments} dokumenter
+            </Typography>
+          </Stack>
+          <ul style={{ padding: 1 }}>
             {issues.map((issue, index) => (
-              <li key={index}>
-                <Typography variant="body2">{issue}</Typography>
+              <li key={index} style={{ display: "flex", alignItems: "center" }}>
+                ❌ <Typography variant="body1" sx={{ ml: 1 }}>{issue}</Typography>
               </li>
             ))}
           </ul>
+
         </Stack>
       </CardContent>
     </Card>

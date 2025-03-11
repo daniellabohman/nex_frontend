@@ -29,7 +29,7 @@ export function ProfilDetaljeForm(): React.JSX.Element {
       }}
     >
       <Card>
-        <CardHeader subheader="Informationen kan blive ændret" title="Profil" />
+        <CardHeader subheader="Opdater din profil" title="Profil" />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -67,8 +67,14 @@ export function ProfilDetaljeForm(): React.JSX.Element {
                     </MenuItem>
                   ))}
                 </Select>
-              </FormControl>
-            </Grid>
+                </FormControl>
+              </Grid>
+              <Grid md={6} xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel>Branche</InputLabel>
+                  <OutlinedInput defaultValue="Online handle" label="branche" name="branche"/>
+                </FormControl>
+              </Grid>
           </Grid>
         </CardContent>
         <Divider />
