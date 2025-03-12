@@ -3,6 +3,7 @@ import RouterLink from 'next/link';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import GDPRScanner from "@/components/auth/GDPRScanner";
 
 import { paths } from '@/paths';
 import { DynamicLogo } from '@/components/core/logo';
@@ -44,21 +45,21 @@ export function Layout({ children }: LayoutProps): React.JSX.Element {
         <Stack spacing={3}>
           <Stack spacing={1}>
             <Typography color="inherit" sx={{ fontSize: '60px', lineHeight: '110px', textAlign: 'center' }} variant="h2">
-              {' '}
-              <Box component="span" sx={{ color: '#15b79e' }}>
-                Nexpertia
-              </Box>
+              <Box component="span" sx={{ color: '#15b79e' }}>Nexpertia</Box>
             </Typography>
             <Typography align="center" variant="subtitle1">
-            Dansk hjælp til GDPR og persondataforordningen
+              Dansk hjælp til GDPR og persondataforordningen
             </Typography>
             <Typography align="center" variant="subtitle2">
-            Undgå bøder -
+              Undgå bøder -
             </Typography>
             <Typography align="center" variant="subtitle2">
-            Få GDPR-compliance på 10 minutter!
+              Få GDPR-compliance på 10 minutter!
             </Typography>
-          </Stack>
+
+          {/* GDPR Scanner */}
+          <GDPRScanner />
+        </Stack>
           
 
         </Stack>

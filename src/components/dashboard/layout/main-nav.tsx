@@ -11,7 +11,7 @@ import { Bell as BellIcon } from '@phosphor-icons/react/dist/ssr/Bell';
 import { List as ListIcon } from '@phosphor-icons/react/dist/ssr/List';
 import { MagnifyingGlass as MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr/MagnifyingGlass';
 import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
-
+import { FileText as FileIcon } from '@phosphor-icons/react/dist/ssr/FileText'
 import { usePopover } from '@/hooks/use-popover';
 
 import { MobileNav } from './mobile-nav';
@@ -55,12 +55,12 @@ export function MainNav(): React.JSX.Element {
             </Tooltip>
           </Stack>
           <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-            <Tooltip title="Contacts">
+            <Tooltip title="Dokumenter">
               <IconButton>
-                <UsersIcon />
+                <FileIcon/>
               </IconButton>
             </Tooltip>
-            <Tooltip title="Notifications">
+            <Tooltip title="Notifikationer">
               <Badge badgeContent={4} color="success" variant="dot">
                 <IconButton>
                   <BellIcon />
