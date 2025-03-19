@@ -50,21 +50,20 @@ export function SignInForm(): React.JSX.Element {
   const onSubmit = React.useCallback(
     async (values: Values): Promise<void> => {
       setIsPending(true);
-
+  
       const { error } = await authClient.signInWithPassword(values);
-
+  
       if (error) {
         setError('root', { type: 'server', message: error });
         setIsPending(false);
         return;
       }
-
-      // Refresh the auth state
+  
+      // Refresh auth state
       await checkSession?.();
-
-      // UserProvider, for this case, will not refresh the router
-      // After refresh, GuestGuard will handle the redirect
-      router.refresh();
+  
+      // Send brugeren til dashboard efter login
+      router.push(paths.dashboard.overview);
     },
     [checkSession, router, setError]
   );

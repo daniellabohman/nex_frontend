@@ -30,7 +30,7 @@ export default function GDPRScanner() {
         value={url}
         onChange={(e) => setUrl(e.target.value)}
         sx={{
-            input: { color: "#fff" }, // Input farve
+            input: { color: "#122647" }, // Input farve
             "& .MuiOutlinedInput-root": {
             "& fieldset": { borderColor: complianceBlue[500] }, // Standard kantfarve (blå)
             "&:hover fieldset": { borderColor: complianceBlue[700] }, // Hover-effekt (mørkere blå)
